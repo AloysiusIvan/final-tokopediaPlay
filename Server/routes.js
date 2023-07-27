@@ -74,8 +74,7 @@ router.post('/videos/:id/comments', async (req, res) => {
         if(req.body.comment && req.body.username){
             await Video.updateOne({urlVideoId: req.params.id}, {$push: {commentList:{
                 username: req.body.username,
-                comment: req.body.comment,
-                timestamp: Date.now()
+                comment: req.body.comment
             }}});
             res.json({message: 'Success'});
         }else{
