@@ -151,7 +151,7 @@ Currently there is only one collection to store all the data needed in the form 
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/AloysiusIvan/final-tokopediaPlay.git
 ```
 
 Go to the project directory
