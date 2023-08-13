@@ -198,7 +198,7 @@ Below is just an example but you can change it as you wish as long as it matches
 Setting up .env at project folder
 ```bash
     DATABASE_URL = 'mongodb://localhost:your-mongo-port/your-db'
-    PORT = 3000
+    PORT = 3001
 ```
 
 ## Installation and Setup Instructions (React)
