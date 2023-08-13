@@ -1,6 +1,14 @@
 # Tokopedia Play Clone
 
-Tokopedia Clone is the final project for a full stack track. Built using MongoDB, Express.js, React.js, Node.js. Currently only available back-end using MongoDB, Express.js, and Node.js.
+Tokopedia Clone is the final project for a full stack track. Built using MongoDB, Express.js, React.js, Node.js. In this application users can watch videos from YouTube while shopping and leave comments.
+
+## Features
+1. User can open Home Page and Video Detail Page
+2. User can see video list with thumbnail from YouTube in home page
+3. User can click each video and go to video detail page
+4. User can see list products, embed YouTube, list comment, and form submit comment
+5. User just need input name and comment when submit comment in form
+6. User can see their comment in list comment section after success submit comment
 
 ## Database Structure
 
@@ -192,3 +200,27 @@ Setting up .env at project folder
     DATABASE_URL = 'mongodb://localhost:your-mongo-port/your-db'
     PORT = 3000
 ```
+
+## Installation and Setup Instructions (React)
+
+Go to the React directory
+
+```bash
+  cd views
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+To Start Server:
+
+```bash
+  npm start
+```
+
+## Note
+
+Make sure you open 2 terminals/bash. One for Express application(Back-End), one for React application(Front-End).

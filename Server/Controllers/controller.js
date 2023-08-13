@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const bodyParser = require('body-parser');
 require('dotenv').config();
@@ -24,6 +25,10 @@ app.use(
     })
 );
 
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
+
 app.get('/', (req, res) => {
     res.json({mess: 'All good!'});
 });
@@ -35,5 +40,5 @@ app.use((req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Running on port ${port}`);
+  console.log(`Server running on [localhost:${port}]`);
 });

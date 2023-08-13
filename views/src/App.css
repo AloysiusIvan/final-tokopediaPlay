@@ -1,0 +1,71 @@
+html {
+  background-color: #28282f;
+  color: white;
+}
+
+.videoItem:hover {
+  cursor: pointer;
+}
+
+.views-count {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  border-radius: 3px;
+}
+
+.homeButton:hover {
+  cursor: pointer;
+  user-select: none;
+  color: #00aa5b;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+.iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.productsCol::-webkit-scrollbar {
+  width: 16px;
+}
+
+.productsCol::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-color: #00aa5b;
+  background-clip: content-box;
+}
+
+.product:hover {
+  cursor: pointer;
+  user-select: none;
+  color: #00aa5b;
+}
+
+.commentsScroll::-webkit-scrollbar {
+  width: 16px;
+}
+
+.product {
+  color: white;
+}
+
+.commentsScroll::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-color: #00aa5b;
+  background-clip: content-box;
+}

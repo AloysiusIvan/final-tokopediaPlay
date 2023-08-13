@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 const Video = require('./Models/videoModel.js');
 
 router.get('/videos', async (req, res) => {
@@ -8,10 +9,25 @@ router.get('/videos', async (req, res) => {
         if(videos.length === 0){
             return res.status(404).json({message: `Videos doesn't exist.`})
         }
+        const videoIds = videos.map(v => v.urlVideoId);
+        const apiKey = process.env.YOUTUBE_KEY;
+        const videoData = await Promise.all(
+            videoIds.map(async videoId => {
+                const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=snippet`);
+                const viewResponse = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=statistics`);
+                const title = response.data.items[0].snippet.title;
+                const channel = response.data.items[0].snippet.channelTitle;
+                const views = viewResponse.data.items[0].statistics.viewCount;
+                return { videoId, title, channel, views };
+            })
+        );
         const videoRes = {
             videos: videos.map(v => ({
                 videoId: v.urlVideoId,
-                urlThumbnail: `https://img.youtube.com/vi/${v.urlVideoId}/maxresdefault.jpg`
+                urlThumbnail: `https://img.youtube.com/vi/${v.urlVideoId}/maxresdefault.jpg`,
+                title: videoData.find(t => t.videoId === v.urlVideoId).title,
+                channel: videoData.find(t => t.videoId === v.urlVideoId).channel,
+                views: videoData.find(t => t.videoId === v.urlVideoId).views
             }))
         };
         res.json(videoRes);
@@ -28,7 +44,7 @@ router.get('/videos/:id', async (req, res) => {
         }
         const videoIdRes = video.map(v => ({
             videoId: v.urlVideoId,
-            urlEmbed: `https://www.youtube.com/embed/${v.urlVideoId}?controls=0`
+            urlEmbed: `https://www.youtube.com/embed/${v.urlVideoId}`
         }));
         res.json(videoIdRes[0]);
     } catch(error) {
